@@ -2,7 +2,7 @@ import React from "react";
 import Card from "./Card";
 import { api } from "../utils/Api";
 
-function Main ({onEditAvatar, onEditProfile, onAddPlace}) {
+function Main ({onEditAvatar, onCardClick, onOverlay, onEditProfile, onAddPlace}) {
 
   const [userName, setUserName] = React.useState('');
   const [userDescription, setUserDescription ] = React.useState('');
@@ -68,7 +68,7 @@ function Main ({onEditAvatar, onEditProfile, onAddPlace}) {
       <section className="elements">
         {cards.map(card => {
           return(
-            <Card key={card._id} card={card} />
+            <Card key={card._id} card={card} onCardClick={onCardClick}/>
           )
         })}
       </section>

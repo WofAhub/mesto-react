@@ -9,6 +9,7 @@ function App() {
   const [isEditAvatarPopupOpen, isSetEditAvatarPopupOpen] = React.useState(false);
   const [isEditProfilePopupOpen, isSetEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, isSetAddPlacePopupOpen] = React.useState(false);
+  const [selectedCard, setSelectedCard] = React.useState({});
 
   function handleEditAvatarClick() {
     isSetEditAvatarPopupOpen(true);
@@ -22,10 +23,15 @@ function App() {
     isSetAddPlacePopupOpen(true);
   }
 
+  function handleCardClick(card) {
+    setSelectedCard(card)
+  }
+
   function closeAllPopups() {
     isSetEditAvatarPopupOpen(false)
     isSetEditProfilePopupOpen(false)
     isSetAddPlacePopupOpen(false)
+    setSelectedCard({})
   }
  
   function handleCloseByOverlay(evt){
@@ -42,6 +48,7 @@ function App() {
           onEditAvatar={handleEditAvatarClick}
           onEditProfile={handleEditProfileClick}
           onAddPlace={handleAddPlaceClick}
+          onCardClick={handleCardClick}
         />
         <Footer />
 
@@ -136,7 +143,10 @@ function App() {
           </span>
         </PopupWithForm>
 
-        <ImagePopup />
+        <ImagePopup 
+          card={selectedCard} 
+          onClose={closeAllPopups}
+        />
       </div>
     </div>
   );
