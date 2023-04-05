@@ -1,10 +1,16 @@
 import React from "react";
 
-function PopupWithForm ({title, name, buttonName, children, isOpen, onOverlay, onClose}) {
+function PopupWithForm ({title, name, buttonName, children, isOpen, onClose}) {
+
+  function handleCloseByOverlay(evt){
+    if (evt.target.classList.contains('pop-up_type_overlay')) {
+      onClose();
+    }
+  }
   return (
     <section
-      className={isOpen ? `pop-up pop-up_type_${name} pop-up_type_overlay pop-up_type_active` : `pop-up pop-up_type_${name} pop-up_type_overlay`}
-      onClick={onOverlay}
+      className={`pop-up pop-up_type_${name} pop-up_type_overlay ${isOpen ? 'pop-up_type_active' : ''}`}
+      onClick={handleCloseByOverlay}
     >
       <div
         className="pop-up__container"

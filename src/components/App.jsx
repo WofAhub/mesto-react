@@ -33,12 +33,6 @@ function App() {
     isSetAddPlacePopupOpen(false)
     setSelectedCard({})
   }
- 
-  function handleCloseByOverlay(evt){
-    if (evt.target.classList.contains('pop-up_type_overlay')) {
-      closeAllPopups();
-    }
-  }
 
   return (
     <div className="root">
@@ -57,7 +51,6 @@ function App() {
           isOpen={isEditAvatarPopupOpen}
           setIsOpen={isSetEditAvatarPopupOpen}
           onClose={closeAllPopups}
-          onOverlay={handleCloseByOverlay}
           buttonName={'Сохранить'}
         >
           <input
@@ -78,7 +71,6 @@ function App() {
           isOpen={isEditProfilePopupOpen}
           setIsOpen={isSetEditProfilePopupOpen}
           onClose={closeAllPopups}
-          onOverlay={handleCloseByOverlay}
           buttonName={'Сохранить'}
         >
           <input 
@@ -115,7 +107,6 @@ function App() {
           isOpen={isAddPlacePopupOpen}
           setIsOpen={isSetAddPlacePopupOpen}
           onClose={closeAllPopups}
-          onOverlay={handleCloseByOverlay}
           buttonName={'Добавить'}
         >
           <input 

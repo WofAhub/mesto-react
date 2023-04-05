@@ -2,32 +2,26 @@ import React from "react";
 import Card from "./Card";
 import { api } from "../utils/Api";
 
-function Main ({onEditAvatar, onCardClick, onOverlay, onEditProfile, onAddPlace}) {
+function Main ({onEditAvatar, onCardClick, onEditProfile, onAddPlace}) {
 
   const [userName, setUserName] = React.useState('');
   const [userDescription, setUserDescription ] = React.useState('');
   const [userAvatar, setUserAvatar] = React.useState('');
   const [cards, setCards] = React.useState([]);
 
-  React.useEffect(() =>  {
-    api.getCurrentUser()
-    .then((data) => {
-      setUserName(data.name);
-      setUserDescription(data.about);
-      setUserAvatar(data.avatar)
-    })
-    .catch((err) => {
-      console.log(`Ошибка в Main, React.useEffect, getCurrentUser: ${err}`);
-    })
-  })
-
   React.useEffect(() => {
-    api.getInitialCards()
-    .then((card) => {
-      setCards(card)
+    Promise.all([
+      api.getCurrentUser(),
+      api.getInitialCards()
+    ])
+    .then(([user, card]) => {
+      setUserName(user.name);
+      setUserDescription(user.about);
+      setUserAvatar(user.avatar);
+      setCards(card);
     })
     .catch((err) => {
-      console.log(`Ошибка в Main, React.useEffect, getInitialCards: ${err}`);
+      console.log(`Ошибка в Main, React.useEffect, PromiseAll: ${err}`);
     })
   }, [])
 

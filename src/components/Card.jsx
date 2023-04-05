@@ -24,7 +24,7 @@ function Card ({card, onCardClick}) {
             className="button button_type_like-button"
             type="button"> 
           </button>
-          <span className="element__counterLikes">0</span>
+          <span className="element__counterLikes">{card.likes.length}</span>
         </div>  
       </div>
     </div>
