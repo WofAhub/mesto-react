@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "./Card";
-import { api } from "./utils/Api";
+import { api } from "../utils/Api";
 
 function Main ({onEditAvatar, onEditProfile, onAddPlace}) {
 
@@ -62,13 +62,15 @@ function Main ({onEditAvatar, onEditProfile, onAddPlace}) {
           type="button"
           onClick={onAddPlace}>  
         </button>
-  
-        <section className="elements">
-          {cards.map((card) => {
-            (<Card key={card._id} card={card} />)
-          })}
-        </section>
 
+      </section>
+
+      <section className="elements">
+        {cards.map(card => {
+          return(
+            <Card key={card._id} card={card} />
+          )
+        })}
       </section>
     </main>
   )
