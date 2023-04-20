@@ -93,6 +93,15 @@ class Api {
     })
     .then(this._getJson);
   }
+  
+  // лайки-дизалайки вместе - условие
+  changeLikeCardStatus(cardId, isLiked) {
+    if (isLiked) {
+      return this.like(cardId);
+    } else {
+      return this.dislike(cardId);
+    }
+  }
 }
 
 export const api = new Api({

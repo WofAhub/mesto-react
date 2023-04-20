@@ -1,6 +1,6 @@
 import React from "react";
 
-function PopupWithForm ({title, name, buttonName, children, isOpen, onClose}) {
+function PopupWithForm ({title, name, buttonName, children, isOpen, onClose, onSubmit}) {
 
   function handleCloseByOverlay(evt){
     if (evt.target.classList.contains('pop-up_type_overlay')) {
@@ -31,6 +31,7 @@ function PopupWithForm ({title, name, buttonName, children, isOpen, onClose}) {
           name="pop-up-form"
           className={`pop-up__form pop-up__form_type_${name}`}
           noValidate
+          onSubmit={onSubmit}
         >
           <fieldset className="pop-up__fieldset">
             {children}
