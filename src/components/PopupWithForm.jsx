@@ -7,6 +7,7 @@ function PopupWithForm ({title, name, buttonName, children, isOpen, onClose, onS
       onClose();
     }
   }
+  
   return (
     <section
       className={`pop-up pop-up_type_${name} pop-up_type_overlay ${isOpen ? 'pop-up_type_active' : ''}`}
@@ -33,7 +34,9 @@ function PopupWithForm ({title, name, buttonName, children, isOpen, onClose, onS
           noValidate
           onSubmit={onSubmit}
         >
-          <fieldset className="pop-up__fieldset">
+          <fieldset 
+            className="pop-up__fieldset"
+          >
             {children}
           </fieldset>
           <button

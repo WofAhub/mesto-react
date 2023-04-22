@@ -45,7 +45,7 @@ function AddPlacePopup({onAddPlace, isOpen, onClose, ...commonProps}) {
         minLength="2"
         maxLength="30"
         required
-        value={name}
+        value={name || ''}
         onChange={handleChangeName}  
       />
       <span
@@ -59,7 +59,7 @@ function AddPlacePopup({onAddPlace, isOpen, onClose, ...commonProps}) {
         className="pop-up__input pop-up__input_type_img-url"
         placeholder="Ссылка на картинку"
         required
-        value={link}
+        value={link || ''}
         onChange={handleChangeLink}  
       />
       <span
